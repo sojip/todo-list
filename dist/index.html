@@ -15,11 +15,11 @@
 
     </div>
 
-    <div class="modal" data-modalName="addToDo">
+    <div class="modal" data-modalName="newToDo">
         <span class="close">&times;</span>
         <div class="addToDo">
             <h1>Add To Do</h1>
-            <form id="addToDo">
+            <form id="toDoInfos">
                 <label for="title">Title:</label><br>
                 <input type="text" id="title" name="title" required><br>
                 <label for="description">Description:</label><br>
@@ -35,8 +35,7 @@
                 </select>
                 <label for="project">Project:</label>
                 <select id="project" name="project">
-                    <option value="default">Default</option>
-                    <option value="project_1">Project_1</option>
+
                 </select>
                 <br>
                 <button type="submit" id="saveToDo">Save</button>
@@ -44,11 +43,11 @@
         </div>
     </div>
 
-    <div class="modal" data-modalName="addProject">   
+    <div class="modal" data-modalName="newProject">
         <span class="close">&times;</span>
         <div class="addProject">
             <h1>Add Project</h1>
-            <form id="addProject">
+            <form id="projectInfos">
                 <label for="title_">Title:</label><br>
                 <input type="text" id="title_" name="title_" required><br>
                 <button type="submit" id="saveProject">Save</button>

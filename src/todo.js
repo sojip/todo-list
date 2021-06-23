@@ -1,7 +1,7 @@
 function Todo (title, description, dueDate, priority, projectId, isDone = false) {
 
-    toggleisDone = () => isDone = !isDone;
-    update = (title, description, dueDate, priority, projectId) => {
+    const toggleisDone = () => isDone = !isDone;
+    const update = (title, description, dueDate, priority, projectId) => {
         title = title;
         description = description;
         dueDate = dueDate;

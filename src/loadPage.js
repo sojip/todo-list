@@ -4,18 +4,17 @@ import menuIcon from "./img/menu.png";
 function loadNav() {
     let content = document.querySelector("#content");
     let nav = document.createElement('nav');
+    content.appendChild(nav);
     let ul = document.createElement('ul');
     ul.classList.add('projects');
-    let item = document.createElement('li');
-    item.textContent = "Default";
-    ul.appendChild(item);
+    nav.appendChild(ul);
     let button = document.createElement('button');
     button.textContent = "New Project";
     button.setAttribute("id", "newProject")
     nav.appendChild(ul);
     nav.appendChild(button);
-    content.appendChild(nav);
 }
+
 
 function loadContent() {
     let content = document.querySelector("#content");
@@ -46,6 +45,7 @@ function loadHeader() {
     let menu = new Image();
     menu.src = menuIcon;
     menu.setAttribute("id", "menuIcon");
+    header.appendChild(div);
     header.appendChild(menu)
 
 }
