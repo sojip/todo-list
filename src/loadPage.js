@@ -1,4 +1,5 @@
 import logoIcon from "./img/1.png";
+import menuIcon from "./img/menu.png";
 
 function loadNav() {
     let content = document.querySelector("#content");
@@ -42,7 +43,10 @@ function loadHeader() {
     let name = document.createElement("h1");
     name.textContent = "My To Do";
     div.appendChild(name);
-    header.appendChild(div);
+    let menu = new Image();
+    menu.src = menuIcon;
+    menu.setAttribute("id", "menuIcon");
+    header.appendChild(menu)
 
 }
 

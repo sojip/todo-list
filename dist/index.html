@@ -9,13 +9,51 @@
 </head>
 
 <body>
-    <header>
-
-
-    </header>
+    <header></header>
 
     <div id="content">
 
+    </div>
+
+    <div class="modal" data-modalName="addToDo">
+        <span class="close">&times;</span>
+        <div class="addToDo">
+            <h1>Add To Do</h1>
+            <form id="addToDo">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br>
+                <label for="description">Description:</label><br>
+                <input type="text" id="description" name="description" required><br>
+                <label for="dueDate">Due date:</label><br>
+                <input type="text" id="dueDate" name="dueDate" required><br>
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="critical">Critical</option>
+                </select>
+                <label for="project">Project:</label>
+                <select id="project" name="project">
+                    <option value="default">Default</option>
+                    <option value="project_1">Project_1</option>
+                </select>
+                <br>
+                <button type="submit" id="saveToDo">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" data-modalName="addProject">   
+        <span class="close">&times;</span>
+        <div class="addProject">
+            <h1>Add Project</h1>
+            <form id="addProject">
+                <label for="title_">Title:</label><br>
+                <input type="text" id="title_" name="title_" required><br>
+                <button type="submit" id="saveProject">Save</button>
+            </form>
+        </div>
     </div>
 
     <script src="./main.js"></script>

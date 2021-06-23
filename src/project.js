@@ -3,8 +3,8 @@ function Project(title) {
     addToDo = (toDo) => {
         toDos.push(toDo);
     }
-    removeToDo = (id) => {
-        toDos.splice(id, 1)
+    removeToDo = (toDoId) => {
+        toDos.splice(toDoId, 1)
     }
 
     return {
@@ -14,3 +14,5 @@ function Project(title) {
         removeToDo,
     }
 }
+
+export { Project }
