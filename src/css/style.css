@@ -63,10 +63,6 @@ nav li {
   cursor: pointer;
 }
 
-/* .projectTitle {
-  margin-top: 75px;
-} */
-
 .toDoContainer {
   height: 270px;
   width: 100%;
@@ -75,6 +71,13 @@ nav li {
 
 .toDo {
   width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.todo > div {
+  display: flex;
+  background-color: blue;
 }
 
 /* modals */
