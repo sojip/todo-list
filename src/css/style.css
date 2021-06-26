@@ -67,17 +67,36 @@ nav li {
   height: 270px;
   width: 100%;
   background-color: red;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .toDo {
   width: 100%;
   display: flex;
+  gap: 15px;
   flex-wrap: nowrap;
-  justify-content: space-between;
 }
-.todo > div {
+
+.toDo.done {
+  text-decoration: line-through;
+}
+.toDo > div:nth-child(1) {
   display: flex;
   background-color: blue;
+  width: 60%;
+  flex: 1 1 auto;
+}
+
+.priority {
+  width: 10%;
+}
+
+.title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* modals */

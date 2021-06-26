@@ -1,13 +1,9 @@
-function Todo (title, description, dueDate, priority, projectId, isDone = false) {
+const Todo = (title, description, dueDate, priority, projectId, isDone = false) => {
 
-    const toggleisDone = () => isDone = !isDone;
-    const update = (title, description, dueDate, priority, projectId) => {
-        title = title;
-        description = description;
-        dueDate = dueDate;
-        priority = priority;
-        projectId = projectId;
-    }
+    const toggleisDone = function() {
+        this.isDone = !this.isDone;
+    };
+
     return {
         title,
         description,
@@ -16,7 +12,6 @@ function Todo (title, description, dueDate, priority, projectId, isDone = false)
         projectId,
         isDone,
         toggleisDone,
-        update
 
     }
 }

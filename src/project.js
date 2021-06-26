@@ -6,12 +6,19 @@ const Project = (title) => {
     const removeToDo = (toDoId) => {
         toDos.splice(toDoId, 1);
     }
+    const updateToDo = (toDoId, title, description, dueDate, priority) => {
+        toDos[toDoId].title = title;
+        toDos[toDoId].description = description;
+        toDos[toDoId].dueDate = dueDate;
+        toDos[toDoId].priority = priority;
+    }
 
     return {
         title,
         toDos,
         addToDo,
         removeToDo,
+        updateToDo
     }
 }
 
