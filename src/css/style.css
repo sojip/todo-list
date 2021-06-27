@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+
 html,
 body {
   width: 100%;
@@ -7,7 +9,7 @@ body {
 }
 
 header {
-  height: 50px;
+  height: 60px;
   width: 100%;
   box-shadow: 0 8px 6px -6px black;
   position: fixed;
@@ -16,6 +18,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color:#A2DBFA;
+  color: white;
 }
 
 #menuIcon {
@@ -28,17 +32,20 @@ header {
   width: calc(100%-250px);
   margin-left: 250px;
   padding-top: 75px;
+  background-color: #E8F0F2;
 }
 
 nav {
   box-sizing: border-box;
   height: 100%;
   width: 250px;
-  top: 50px;
+  top: 60px;
   left: 0;
   position: fixed;
   padding: 25px;
-  background-color: aqua;
+  background-color: #A2DBFA;
+  color: white;
+
 }
 
 nav li {
@@ -47,27 +54,31 @@ nav li {
 }
 
 nav li.active {
-  background-color: yellow;
+  background-color: #39A2DB;
 }
 
 .logo {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 50px;
+  padding: 5px;
   margin-left: 25px;
+  border-radius: 5px;
+  font-family: 'Nothing You Could Do', cursive;
 }
 
 #logo,
 #menuIcon {
   width: 40px;
-  height: 40px;
+  height: 35px;
   cursor: pointer;
 }
 
 .toDoContainer {
   height: 270px;
   width: 100%;
-  background-color: red;
+  /* background-color: red; */
   padding: 10px;
   box-sizing: border-box;
 }
