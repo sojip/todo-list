@@ -86,19 +86,11 @@ let DOMStuff = (function() {
 
                 else if (e.target.classList.contains("delete")) {
                     ProjectBoard.projects[projectId].removeToDo(toDoId);
-                    console.log(ProjectBoard.projects[projectId].toDos)
                     container.removeChild(div);
                 }
                 else {
                     editToDo(toDo);
                 }
-                // if (!e.target.type){ 
-                //     editToDo(toDo);
-                // }
-                // else {
-                //     toDo.toggleisDone();
-                //     div.classList.toggle("done");
-                // }
             });
             container.appendChild(div);
         }      

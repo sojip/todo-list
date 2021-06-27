@@ -15,6 +15,8 @@ const App = (function () {
     loadContent();
      // create default project
     let defaultProject = Project("default");
+    localStorage.setItem("default", JSON.stringify(defaultProject));
+    console.log(localStorage.getItem("default"));
     // save the project
     ProjectBoard.addProject(defaultProject);
     //add to the DOM
