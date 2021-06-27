@@ -7,8 +7,9 @@ let DOMStuff = (function() {
             let action = document.querySelector("#action_");
             action.textContent = "Add To Do";
             document.querySelector("#project").disabled = false;
-            modal.classList.add("opened");
         }
+        modal.classList.add("opened");
+       
     };
     const hideModal = (modal) => modal.classList.remove("opened");
     const editToDo = (toDo) => {
@@ -42,51 +43,65 @@ let DOMStuff = (function() {
         for (const toDo of toDos) {
             if (Number(toDo.getAttribute("projectid")) === projectId && Number(toDo.getAttribute("todoid")) === todoId) {
                 toDo.childNodes[1].textContent = todo.dueDate;
-                toDo.childNodes[2].textContent = todo.priority;
                 toDo.childNodes[0].childNodes[1].textContent = todo.title;
             }
         }
     }
 
     const addToDo = (toDo) => {
-        let container = document.querySelector(".toDoContainer");
-        let div = document.createElement('div');
-        div.classList.add("toDo");
-        let toDoId = ProjectBoard.projects[toDo.projectId].toDos.indexOf(toDo);
-        div.setAttribute("toDoid", toDoId);
-        div.setAttribute("projectId", toDo.projectId);
-        let div_ = document.createElement("div");
-        div.appendChild(div_);
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        div_.appendChild(checkbox);
-        let title = document.createElement("div");
-        title.classList.add("title");
-        title.textContent = toDo.title;
-        div_.appendChild(title);
-        let dueDate = document.createElement("div");
-        dueDate.classList.add("dueDate");
-        dueDate.textContent = toDo.dueDate;
-        div.appendChild(dueDate);
-        let priority = document.createElement("div");
-        priority.classList.add("priority");
-        priority.textContent = toDo.priority;
-        div.appendChild(priority);
-        //add event listenner 
-        div.addEventListener("click", (e) => {
-            let projectId = div.getAttribute("projectid");
-            let toDoId = div.getAttribute("todoid");
-            let toDo = ProjectBoard.projects[projectId].toDos[toDoId];
-            if (!e.target.type){ 
-                editToDo(toDo);
-            }
-            else {
-                toDo.toggleisDone();
-                div.classList.toggle("done");
-                console.log(toDo)
-            }
-        });
-        container.appendChild(div);
+        let activeProject = document.querySelector(".active");
+        let activeProjectId = activeProject.getAttribute("data-projectid");
+        if(activeProjectId === toDo.projectId) {
+            let container = document.querySelector(".toDoContainer");
+            let div = document.createElement('div');
+            div.classList.add("toDo");
+            let toDoId = ProjectBoard.projects[toDo.projectId].toDos.indexOf(toDo);
+            div.setAttribute("toDoid", toDoId);
+            div.setAttribute("projectId", toDo.projectId);
+            let div_ = document.createElement("div");
+            div.appendChild(div_);
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            div_.appendChild(checkbox);
+            let title = document.createElement("div");
+            title.classList.add("title");
+            title.textContent = toDo.title;
+            div_.appendChild(title);
+            let dueDate = document.createElement("div");
+            dueDate.classList.add("dueDate");
+            dueDate.textContent = toDo.dueDate;
+            div.appendChild(dueDate);
+            let delete_ = document.createElement("button");
+            delete_.textContent = "Delete";
+            delete_.classList.add("delete");
+            div.appendChild(delete_);
+            div.addEventListener("click", (e) => {
+                let projectId = div.getAttribute("projectid");
+                let toDoId = div.getAttribute("todoid");
+                let toDo = ProjectBoard.projects[projectId].toDos[toDoId];
+                if (e.target.type === "checkbox") {
+                    toDo.toggleisDone();
+                    div.classList.toggle("done");
+                }
+
+                else if (e.target.classList.contains("delete")) {
+                    ProjectBoard.projects[projectId].removeToDo(toDoId);
+                    console.log(ProjectBoard.projects[projectId].toDos)
+                    container.removeChild(div);
+                }
+                else {
+                    editToDo(toDo);
+                }
+                // if (!e.target.type){ 
+                //     editToDo(toDo);
+                // }
+                // else {
+                //     toDo.toggleisDone();
+                //     div.classList.toggle("done");
+                // }
+            });
+            container.appendChild(div);
+        }      
     }
 
     const addProjToNav = (project) => {
@@ -95,6 +110,20 @@ let DOMStuff = (function() {
         let item = document.createElement('li');
         item.setAttribute("data-projectId", projectId)
         item.textContent = project.title;
+        //add event listenner
+        item.addEventListener("click", () => {
+            let active = document.querySelector(".active");
+            active.classList.remove("active");
+            item.classList.add("active");
+            let projectId = item.getAttribute("data-projectId");
+            let toDos = ProjectBoard.projects[projectId].toDos;
+            let toDoContainer = document.querySelector(".toDoContainer");
+            let toDoChilds = document.querySelectorAll(".toDo");
+            toDoChilds.forEach((todo) => {toDoContainer.removeChild(todo)});
+            for (const toDo of toDos) {
+                addToDo(toDo);
+            }
+        })
         ul.appendChild(item);
     }
 

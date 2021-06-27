@@ -5,24 +5,23 @@ import { Project, ProjectBoard } from "./project.js";
 import { Todo } from "./todo.js";
 import { DOMStuff } from "./domstuff.js";
 
-loadHeader();
-loadNav();
-loadContent();
+// loadHeader();
+// loadNav();
+// loadContent();
 
 const App = (function () {
-     // create default projects
+    loadHeader();
+    loadNav();
+    loadContent();
+     // create default project
     let defaultProject = Project("default");
-    let anotherProject = Project("another");
-    // save the projects
+    // save the project
     ProjectBoard.addProject(defaultProject);
-    ProjectBoard.addProject(anotherProject);
-
-    //add to the projects dropdown classList
-     DOMStuff.addProjToSelect (defaultProject);
-     DOMStuff.addProjToSelect (anotherProject);
-
-     DOMStuff.addProjToNav(defaultProject);
-     DOMStuff.addProjToNav(anotherProject);
+    //add to the DOM
+    DOMStuff.addProjToSelect (defaultProject);
+    DOMStuff.addProjToNav(defaultProject);
+    let active = document.querySelector(".projects").firstChild;
+    active.classList.add("active");
 
     
 
@@ -49,8 +48,8 @@ const App = (function () {
         if(form.classList.contains("update")) {
             let projectId = Number(document.getElementsByName("projectId")[0].value);
             let todoId = Number(document.getElementsByName("todoId")[0].value);
-            let project = ProjectBoard.projects[projectId];
-            project.updateToDo(todoId, title, description, dueDate, priority);
+            let todo = ProjectBoard.projects[projectId].toDos[todoId];
+            todo.update(title, description, dueDate, priority);
             DOMStuff.updateToDo(projectId, todoId)
             form.classList.remove("update")
             form.removeChild(document.getElementsByName("projectId")[0]);
@@ -65,11 +64,15 @@ const App = (function () {
         DOMStuff.hideModal(newToDoModal);
     })
 
-    saveProject.addEventListener("click", () =>  {
+    saveProject.addEventListener("click", (e) =>  {
         e.preventDefault();
-        createProject();
+        let title =  document.querySelector("#title_").value;
+        let project = Project(title);
+        ProjectBoard.addProject(project);
         document.querySelector("#projectInfos").reset();
         DOMStuff.hideModal(newProjectModal);
+        DOMStuff.addProjToSelect(project);
+        DOMStuff.addProjToNav(project);
     })
 
     //close modal

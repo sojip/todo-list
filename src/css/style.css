@@ -39,14 +39,15 @@ nav {
   position: fixed;
   padding: 25px;
   background-color: aqua;
-  overflow-y: auto;
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 nav li {
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+nav li.active {
+  background-color: yellow;
 }
 
 .logo {
