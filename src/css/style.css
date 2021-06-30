@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
 html,
 body {
@@ -11,15 +12,13 @@ body {
 header {
   height: 60px;
   width: 100%;
-  box-shadow: 0 8px 6px -6px black;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:#A2DBFA;
-  color: white;
+  background-color: white;
 }
 
 #menuIcon {
@@ -31,8 +30,20 @@ header {
   height: 100%;
   width: calc(100%-250px);
   margin-left: 250px;
-  padding-top: 75px;
-  background-color: #E8F0F2;
+  padding-top: 70px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #d3d3d3;
+  overflow-y: auto;
+}
+
+.projectTitle {
+  text-align: center;
+  width: 200px;
+  float: right;
+  padding: 5px;
+  background-color: white;
+  margin-bottom: 25px;
 }
 
 nav {
@@ -42,19 +53,38 @@ nav {
   top: 60px;
   left: 0;
   position: fixed;
-  padding: 25px;
-  background-color: #A2DBFA;
-  color: white;
+  padding-left: 25px;
+  background-color: white;
+  color: black;
+  line-height: 3;
+}
 
+nav ul {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 nav li {
+  box-sizing: border-box;
   text-transform: capitalize;
   cursor: pointer;
+  height: 30px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 15px 0 0 15px;
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 nav li.active {
-  background-color: #39A2DB;
+  background-color: #d3d3d3;
 }
 
 .logo {
@@ -64,8 +94,8 @@ nav li.active {
   height: 50px;
   padding: 5px;
   margin-left: 25px;
-  border-radius: 5px;
-  font-family: 'Nothing You Could Do', cursive;
+  font-family: "Nothing You Could Do", cursive;
+  cursor: pointer;
 }
 
 #logo,
@@ -76,18 +106,38 @@ nav li.active {
 }
 
 .toDoContainer {
-  height: 270px;
   width: 100%;
-  /* background-color: red; */
-  padding: 10px;
   box-sizing: border-box;
+}
+
+#newToDo {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#newProject {
+  background-color: #fc6d89;
+  border: none;
+  padding: 5px;
+  width: 100px;
+  box-shadow: 0 8px 6px -6px black;
+  cursor: pointer;
 }
 
 .toDo {
   width: 100%;
   display: flex;
-  gap: 15px;
   flex-wrap: nowrap;
+  background-color: white;
+  align-items: center;
+  padding: 15px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .toDo.done {
@@ -95,13 +145,18 @@ nav li.active {
 }
 .toDo > div:nth-child(1) {
   display: flex;
-  background-color: blue;
   width: 60%;
   flex: 1 1 auto;
 }
 
-.priority {
-  width: 10%;
+.dueDate {
+  width: 20%;
+  flex: 1 1 auto;
+}
+
+.delete {
+  height: 25px;
+  width: 25px;
 }
 
 .title {

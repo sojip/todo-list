@@ -1,4 +1,5 @@
 import {ProjectBoard} from "./project.js";
+import deleteIcon from "./img/trash.png";
 
 
 let DOMStuff = (function() {
@@ -71,8 +72,8 @@ let DOMStuff = (function() {
             dueDate.classList.add("dueDate");
             dueDate.textContent = toDo.dueDate;
             div.appendChild(dueDate);
-            let delete_ = document.createElement("button");
-            delete_.textContent = "Delete";
+            let delete_ = new Image;
+            delete_.src = deleteIcon;
             delete_.classList.add("delete");
             div.appendChild(delete_);
             div.addEventListener("click", (e) => {
@@ -86,7 +87,11 @@ let DOMStuff = (function() {
 
                 else if (e.target.classList.contains("delete")) {
                     ProjectBoard.projects[projectId].removeToDo(toDoId);
-                    container.removeChild(div);
+                    let toDoChilds = document.querySelectorAll(".toDo");
+                    toDoChilds.forEach((todo) => {container.removeChild(todo)});
+                    for (const todo of ProjectBoard.projects[projectId].toDos) {
+                        addToDo(todo)
+                    }
                 }
                 else {
                     editToDo(toDo);

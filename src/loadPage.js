@@ -1,5 +1,6 @@
 import logoIcon from "./img/1.png";
 import menuIcon from "./img/menu.png";
+import addIcon from "./img/add.png";
 
 function loadNav() {
     let content = document.querySelector("#content");
@@ -11,8 +12,8 @@ function loadNav() {
     let button = document.createElement('button');
     button.textContent = "New Project";
     button.setAttribute("id", "newProject")
-    nav.appendChild(ul);
     nav.appendChild(button);
+    nav.appendChild(ul);
 }
 
 
@@ -25,10 +26,10 @@ function loadContent() {
     let div = document.createElement('div');
     div.classList.add("toDoContainer");
     content.appendChild(div);
-    let button = document.createElement('button');
-    button.textContent = "Add";
-    button.id = "newToDo";
-    content.appendChild(button)
+    let add = new Image;
+    add.src = addIcon;
+    add.id = "newToDo";
+    content.appendChild(add);
 }
 
 function loadHeader() {
@@ -46,8 +47,7 @@ function loadHeader() {
     menu.src = menuIcon;
     menu.setAttribute("id", "menuIcon");
     header.appendChild(div);
-    header.appendChild(menu)
-
+    header.appendChild(menu);
 }
 
 export { loadNav, loadContent, loadHeader }

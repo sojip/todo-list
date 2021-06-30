@@ -5,14 +5,12 @@ import { Project, ProjectBoard } from "./project.js";
 import { Todo } from "./todo.js";
 import { DOMStuff } from "./domstuff.js";
 
-// loadHeader();
-// loadNav();
-// loadContent();
+
 
 const App = (function () {
     loadHeader();
-    loadNav();
-    loadContent();
+    // loadNav();
+    // loadContent();
      // create default project
     let defaultProject = Project("default");
     localStorage.setItem("default", JSON.stringify(defaultProject));
