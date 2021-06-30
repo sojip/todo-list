@@ -63,6 +63,10 @@ let DOMStuff = (function() {
             div.appendChild(div_);
             let checkbox = document.createElement("input");
             checkbox.type = "checkbox";
+            if(toDo.isDone) {
+                checkbox.checked = true;
+                div.classList.add("done");
+            }
             div_.appendChild(checkbox);
             let title = document.createElement("div");
             title.classList.add("title");
