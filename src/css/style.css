@@ -13,6 +13,7 @@ header {
   height: 60px;
   width: 100%;
   position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
   display: flex;
@@ -27,10 +28,12 @@ header {
 
 #content {
   box-sizing: border-box;
-  height: 100%;
-  width: calc(100%-250px);
-  margin-left: 250px;
-  padding-top: 70px;
+  height: calc(100% - 60px);
+  width: calc(100% - 250px);
+  position: relative;
+  bottom: calc(100% - 120px);
+  left: 250px;
+  padding-top: 50px;
   padding-left: 25px;
   padding-right: 25px;
   background-color: #d3d3d3;
@@ -47,40 +50,36 @@ header {
 }
 
 nav {
-  box-sizing: border-box;
-  height: 100%;
-  width: 250px;
+  position: relative;
   top: 60px;
-  left: 0;
-  position: fixed;
+  box-sizing: border-box;
+  height: calc(100% - 60px);
+  width: 250px;
+  padding-top: 50px;
   padding-left: 25px;
-  background-color: white;
   color: black;
   line-height: 3;
+  overflow-y: auto;
+  direction: rtl;
 }
 
-nav ul {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.nav_content {
+  direction: ltr;
 }
 
 nav li {
-  box-sizing: border-box;
+  width: 100%;
+  overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
   text-transform: capitalize;
   cursor: pointer;
-  height: 30px;
   padding-left: 10px;
-  display: flex;
-  align-items: center;
-  border-radius: 15px 0 0 15px;
+  border-radius: 25px 0 0 25px;
   font-family: "Caveat", cursive;
-  font-size: 20px;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 18px;
+  box-sizing: border-box;
+
 }
 
 nav li.active {
@@ -96,6 +95,7 @@ nav li.active {
   margin-left: 25px;
   font-family: "Nothing You Could Do", cursive;
   cursor: pointer;
+  gap: 5px;
 }
 
 #logo,
@@ -126,6 +126,10 @@ nav li.active {
   width: 100px;
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+  position: fixed;
+  top: 65px;
+  left: 25px;
+  z-index: 999;
 }
 
 .toDo {

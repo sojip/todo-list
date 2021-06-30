@@ -4,17 +4,16 @@ import { loadNav, loadContent, loadHeader} from "./loadPage.js";
 import { Project, ProjectBoard } from "./project.js";
 import { Todo } from "./todo.js";
 import { DOMStuff } from "./domstuff.js";
+loadHeader();
+loadNav();
+loadContent();
 
 
 
 const App = (function () {
-    loadHeader();
-    // loadNav();
-    // loadContent();
-     // create default project
+
+    // create default project
     let defaultProject = Project("default");
-    localStorage.setItem("default", JSON.stringify(defaultProject));
-    console.log(localStorage.getItem("default"));
     // save the project
     ProjectBoard.addProject(defaultProject);
     //add to the DOM

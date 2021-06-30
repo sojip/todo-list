@@ -5,15 +5,17 @@ import addIcon from "./img/add.png";
 function loadNav() {
     let content = document.querySelector("#content");
     let nav = document.createElement('nav');
-    content.appendChild(nav);
-    let ul = document.createElement('ul');
-    ul.classList.add('projects');
-    nav.appendChild(ul);
+    document.body.insertBefore(nav,content);
     let button = document.createElement('button');
     button.textContent = "New Project";
     button.setAttribute("id", "newProject")
     nav.appendChild(button);
-    nav.appendChild(ul);
+    let div = document.createElement('div');
+    div.classList.add("nav_content");
+    nav.appendChild(div);
+    let ul = document.createElement('ul');
+    ul.classList.add('projects');
+    div.appendChild(ul);
 }
 
 
