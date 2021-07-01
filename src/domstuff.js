@@ -116,7 +116,9 @@ let DOMStuff = (function() {
             let active = document.querySelector(".active");
             active.classList.remove("active");
             item.classList.add("active");
+            let projectTitle = document.querySelector(".projectTitle");
             let projectId = item.getAttribute("data-projectId");
+            projectTitle.textContent = ProjectBoard.projects[projectId].title;
             let toDos = ProjectBoard.projects[projectId].toDos;
             let toDoContainer = document.querySelector(".toDoContainer");
             let toDoChilds = document.querySelectorAll(".toDo");

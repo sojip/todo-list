@@ -4,15 +4,14 @@ import { loadNav, loadContent, loadHeader} from "./loadPage.js";
 import { Project, ProjectBoard } from "./project.js";
 import { Todo } from "./todo.js";
 import { DOMStuff } from "./domstuff.js";
-loadHeader();
-loadNav();
-loadContent();
 
 
 
 const App = (function () {
-
-    // create default project
+    loadHeader();
+    loadNav();
+    loadContent();
+     // create default project
     let defaultProject = Project("default");
     // save the project
     ProjectBoard.addProject(defaultProject);
@@ -30,6 +29,8 @@ const App = (function () {
     let saveProject = document.querySelector("#saveProject");
     let newToDoModal = document.querySelector("[data-modalName='newToDo']");
     let newProjectModal = document.querySelector("[data-modalName='newProject']");
+    let menuIcon = document.querySelector("#menuIcon");
+    let close = document.querySelector(".close");
 
     newToDo.addEventListener("click", () => DOMStuff.showModal(newToDoModal));
     newProject.addEventListener("click", () => DOMStuff.showModal(newProjectModal));
@@ -72,6 +73,19 @@ const App = (function () {
         DOMStuff.hideModal(newProjectModal);
         DOMStuff.addProjToSelect(project);
         DOMStuff.addProjToNav(project);
+    })
+
+    menuIcon.addEventListener("click", () => {
+        let nav = document.querySelector("nav");
+        let content =  document.querySelector("#content");
+        nav.classList.toggle("hide");
+        content.classList.toggle("full");
+        
+    })
+
+    close.addEventListener("click" , () => {
+        let modal = document.querySelector(".opened");
+        DOMStuff.hideModal(modal);
     })
 
     //close modal
