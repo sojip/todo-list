@@ -30,7 +30,7 @@ const App = (function () {
     let newToDoModal = document.querySelector("[data-modalName='newToDo']");
     let newProjectModal = document.querySelector("[data-modalName='newProject']");
     let menuIcon = document.querySelector("#menuIcon");
-    let close = document.querySelector(".close");
+    let close = document.querySelectorAll(".close");
 
     newToDo.addEventListener("click", () => DOMStuff.showModal(newToDoModal));
     newProject.addEventListener("click", () => DOMStuff.showModal(newProjectModal));
@@ -83,9 +83,11 @@ const App = (function () {
         
     })
 
-    close.addEventListener("click" , () => {
-        let modal = document.querySelector(".opened");
-        DOMStuff.hideModal(modal);
+    close.forEach((button) => {
+        button.addEventListener("click" , () => {
+            let modal = document.querySelector(".opened");
+            DOMStuff.hideModal(modal);
+        })
     })
 
     //close modal
