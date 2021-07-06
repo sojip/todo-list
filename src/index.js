@@ -50,8 +50,8 @@ const App = (function () {
             let todoId = Number(document.getElementsByName("todoId")[0].value);
             let todo = ProjectBoard.projects[projectId].toDos[todoId];
             todo.update(title, description, dueDate, priority);
-            DOMStuff.updateToDo(projectId, todoId)
-            form.classList.remove("update")
+            DOMStuff.updateToDo(projectId, todoId);
+            form.classList.remove("update");
             form.removeChild(document.getElementsByName("projectId")[0]);
             form.removeChild(document.getElementsByName("todoId")[0]);
         }
@@ -62,7 +62,7 @@ const App = (function () {
             }
         form.reset();
         DOMStuff.hideModal(newToDoModal);
-    })
+    });
 
     saveProject.addEventListener("click", (e) =>  {
         e.preventDefault();
@@ -73,7 +73,7 @@ const App = (function () {
         DOMStuff.hideModal(newProjectModal);
         DOMStuff.addProjToSelect(project);
         DOMStuff.addProjToNav(project);
-    })
+    });
 
     menuIcon.addEventListener("click", () => {
         let nav = document.querySelector("nav");
@@ -81,14 +81,14 @@ const App = (function () {
         nav.classList.toggle("hide");
         content.classList.toggle("full");
         
-    })
+    });
 
     close.forEach((button) => {
         button.addEventListener("click" , () => {
             let modal = document.querySelector(".opened");
             DOMStuff.hideModal(modal);
-        })
-    })
+        });
+    });
 
     //close modal
     document.addEventListener("click", (e)=> {
@@ -97,19 +97,19 @@ const App = (function () {
         if (Array.from(modals).includes(e.target)) {
             forms.forEach((form)=> {
                 if (form.classList.contains("update")) {
-                    form.classList.remove("update")
+                    form.classList.remove("update");
                     form.removeChild(document.getElementsByName("projectId")[0]);
                     form.removeChild(document.getElementsByName("todoId")[0]);
                 }
-                form.reset()
-            })
+                form.reset();
+            });
             DOMStuff.hideModal(e.target);
         } 
-    })
+    });
 
-    return
+    return;
 
-})()
+})();
 
  
 

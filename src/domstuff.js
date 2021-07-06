@@ -36,7 +36,7 @@ let DOMStuff = (function() {
         document.querySelector("#priority").value = toDo.priority;
         document.querySelector("#project").value = ProjectBoard.projects[toDo.projectId].title;
         document.querySelector("#project").disabled = true;
-    }
+    };
 
     const updateToDo = (projectId, todoId) => {
         let toDos = Array.from(document.querySelectorAll(".toDo"));
@@ -47,14 +47,14 @@ let DOMStuff = (function() {
                 toDo.childNodes[0].childNodes[1].textContent = todo.title;
             }
         }
-    }
+    };
 
     const addToDo = (toDo) => {
         let activeProject = document.querySelector(".active");
         let activeProjectId = activeProject.getAttribute("data-projectid");
         if(activeProjectId === toDo.projectId) {
             let container = document.querySelector(".toDoContainer");
-            let div = document.createElement('div');
+            let div = document.createElement("div");
             div.classList.add("toDo");
             let toDoId = ProjectBoard.projects[toDo.projectId].toDos.indexOf(toDo);
             div.setAttribute("toDoid", toDoId);
@@ -92,9 +92,9 @@ let DOMStuff = (function() {
                 else if (e.target.classList.contains("delete")) {
                     ProjectBoard.projects[projectId].removeToDo(toDoId);
                     let toDoChilds = document.querySelectorAll(".toDo");
-                    toDoChilds.forEach((todo) => {container.removeChild(todo)});
+                    toDoChilds.forEach((todo) => {container.removeChild(todo);});
                     for (const todo of ProjectBoard.projects[projectId].toDos) {
-                        addToDo(todo)
+                        addToDo(todo);
                     }
                 }
                 else {
@@ -103,13 +103,13 @@ let DOMStuff = (function() {
             });
             container.appendChild(div);
         }      
-    }
+    };
 
     const addProjToNav = (project) => {
         let ul = document.querySelector(".projects");
         let projectId = ProjectBoard.projects.indexOf(project);
-        let item = document.createElement('li');
-        item.setAttribute("data-projectId", projectId)
+        let item = document.createElement("li");
+        item.setAttribute("data-projectId", projectId);
         item.textContent = project.title;
         //add event listenner
         item.addEventListener("click", () => {
@@ -122,7 +122,7 @@ let DOMStuff = (function() {
             let toDos = ProjectBoard.projects[projectId].toDos;
             let toDoContainer = document.querySelector(".toDoContainer");
             let toDoChilds = document.querySelectorAll(".toDo");
-            toDoChilds.forEach((todo) => {toDoContainer.removeChild(todo)});
+            toDoChilds.forEach((todo) => {toDoContainer.removeChild(todo);});
             for (const toDo of toDos) {
                 addToDo(toDo);
             }
@@ -134,9 +134,9 @@ let DOMStuff = (function() {
                 nav.classList.toggle("hide");
                 content.classList.toggle("full");
             }
-        })
+        });
         ul.appendChild(item);
-    }
+    };
 
     const addProjToSelect = (project) => {
         let select = document.querySelector("#project");
@@ -146,7 +146,7 @@ let DOMStuff = (function() {
         option.setAttribute("data-projectId", projectId);
         option.textContent = project.title;
         select.appendChild(option);
-    }
+    };
 
     return {
         showModal,
@@ -156,7 +156,7 @@ let DOMStuff = (function() {
         addProjToNav,
         addProjToSelect
 
-    }
-})()
+    };
+})();
 
-export { DOMStuff }
+export { DOMStuff };

@@ -8,7 +8,7 @@ const Todo = (title, description, dueDate, priority, projectId, isDone = false) 
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-    }
+    };
 
 
     return {
@@ -20,7 +20,7 @@ const Todo = (title, description, dueDate, priority, projectId, isDone = false) 
         isDone,
         toggleisDone,
         update
-    }
-}
+    };
+};
 
-export { Todo }
+export { Todo };
