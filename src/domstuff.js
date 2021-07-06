@@ -126,6 +126,14 @@ let DOMStuff = (function() {
             for (const toDo of toDos) {
                 addToDo(toDo);
             }
+            //hide menu after click on mobile
+            let condition = window.matchMedia("(max-width:596px)");
+            if (condition.matches) {
+                let nav = document.querySelector("nav");
+                let content =  document.querySelector("#content");
+                nav.classList.toggle("hide");
+                content.classList.toggle("full");
+            }
         })
         ul.appendChild(item);
     }

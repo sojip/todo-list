@@ -56,7 +56,7 @@ const App = (function () {
             form.removeChild(document.getElementsByName("todoId")[0]);
         }
         else {
-            let toDo = Todo(title, description, dueDate, priority, projectId)
+            let toDo = Todo(title, description, dueDate, priority, projectId);
             ProjectBoard.projects[projectId].addToDo(toDo);
             DOMStuff.addToDo(toDo);
             }
